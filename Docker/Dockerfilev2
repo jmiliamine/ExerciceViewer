@@ -1,0 +1,9 @@
+FROM node:latest
+ENV NODE_OPTIONS=--openssl-legacy-provider
+WORKDIR /data
+RUN \
+    apt-get install git &&\
+    git clone https://github.com/Saradoc62/viewer-ts.git &&\
+    cd ./viewer-ts && npm install
+WORKDIR /data/viewer-ts/
+ENTRYPOINT ["npm", "run", "start"]
